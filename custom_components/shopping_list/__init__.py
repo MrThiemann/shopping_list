@@ -415,7 +415,9 @@ class ShoppingData:
             self.map_items[itm.id] = itm
 
         self.items = [itm.to_ha() for k, itm in self.map_items.items()]
-
+        
+        await self.hass.async_add_executor_job(self.save)
+        
     async def async_load(self):
         """Load items."""
 
